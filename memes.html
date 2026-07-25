@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши Мемы из Санатория</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Стили для красивой шапки сайта */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+        .navbar-logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ff4757;
+            text-decoration: none;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #57606f;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover {
+            background-color: #ffeae6;
+            color: #ff4757;
+        }
+        .nav-link.active {
+            background-color: #ff4757;
+            color: white;
+        }
+
+        /* Центрирование карточки с учетом шапки */
+        .content-wrapper {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        
+        .meme-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        h2 {
+            color: #ff4757;
+            margin-top: 0;
+        }
+        .meme-text {
+            font-size: 1.2rem;
+            color: #2f3542;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            line-height: 1.5;
+            transition: opacity 0.2s ease-in-out;
+        }
+        .meme-btn {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+            transition: transform 0.1s, background-color 0.2s;
+        }
+        .meme-btn:active {
+            transform: scale(0.95);
+        }
+        .meme-btn:hover {
+            background-color: #ff6b81;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигационное меню -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">🌲 Санаторий 2026</a>
+        <div class="navbar-links">
+            <a href="index.html" class="nav-link">Главная</a>
+            <a href="memes.html" class="nav-link active">Мемы</a>
+        </div>
+    </nav>
+
+    <!-- Обертка для контента генератора мемов -->
+    <div class="content-wrapper">
+        <div class="meme-card">
+            <h2>🎪 Санаторий 2026</h2>
+            <!-- Здесь будет появляться текст мема -->
+            <p class="meme-text" id="memeBox">Нажми на кнопку, чтобы вспомнить разрывной мем!</p>
+            <button class="meme-btn" onclick="getRandomMeme()">Вспомнить мем 💥</button>
+        </div>
+    </div>
+
+    <script>
+        // СПИСОК ВАШИХ МЕМОВ (Ошибки исправлены)
+        const memes = [
+            "Гендер пати",
+            "Щас подождите ладно пофиг (в душе)",
+            "Леха восьмиклассница",
+            "Почему у них два урока, а у меня пять",
+            "И подушка",
+            "Посидим посидим",
+            "Макароны не съели, буду злится",
+            "Дух Кирилла, изыди!",
+            "Тут надо подумать. Линолеум",
+            "Сколиоз",
+            "Сахтун Блюмкин собакин туч клац",
+            "Начинаете мыться до ужина полчаса, о, и Ромка тут",
+            "Мы чистые",
+            "Леха маньяк, сто, сыска, Ёса с юком",
+            "Не смотрите на меня",
+            "Драка за шлепки",
+            "Семейка (папа, мама, сын, тетя, дядя)",
+            "Оле, мама, я тут!",
+            "Идите, щас к мужикам подойдууу", 
+            "7, 8, 9, идём в школу, уу!"
+        ];
+
+        function getRandomMeme() {
+            const memeBox = document.getElementById('memeBox');
+            
+            // Плавное исчезновение старого текста
+            memeBox.style.opacity = 0;
+            
+            setTimeout(() => {
+                // Выбираем случайную строчку из массива memes
+                const randomIndex = Math.floor(Math.random() * memes.length);
+                memeBox.innerText = memes[randomIndex];
+                // Плавное появление нового текста
+                memeBox.style.opacity = 1;
+            }, 200);
+        }
+    </script>
+
+</body>
+</html>
